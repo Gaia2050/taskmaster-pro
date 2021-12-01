@@ -196,14 +196,19 @@ $(".card .list-group").sortable({
     var tempArr = [];
     // loop over current set of children 
     $(this).children().each(function(){
-      // //trim down lists ID to match object property
-      // var arrName = $(this)
-      // .attr("id")
-      // .replace("list-", "");
+      //trim down lists ID to match object property
+      var arrName = $(this)
+      .attr("id")
+      .replace("list-", "");
 
-      // //update array on tasks object and save
-      // tasks[arrName] = tempArr;
-      // saveTasks();
+      tempArr.push({
+        text: text,
+        date: date 
+      });
+
+      //update array on tasks object and save
+      tasks[arrName] = tempArr;
+      saveTasks();
       
       var text = $(this)
       .find("p")
@@ -215,22 +220,27 @@ $(".card .list-group").sortable({
       .text()
       .trim();
 
-       //trim down lists ID to match object property
-       var arrName = $(this)
-       .attr("id")
-       .replace("list-", "");
- 
-       //update array on tasks object and save
-       tasks[arrName] = tempArr;
-       saveTasks();
-
       //add task data tot he temp array as an object
-      tempArr.push({
-        text: text,
-        date: date 
-      });
+      // tempArr.push({
+      //   text: text,
+      //   date: date 
+      // });
     });
     console.log(tempArr);
+  }
+});
+
+$("#trash").droppable({
+  accept: ".card .list-group-item",
+  tolerance: "touch",
+  drop: function(event, ui) {
+    console.log("drop");
+  },
+  over: function(event, ui) {
+    console.log("over");
+  },
+  out: function(event, ui) {
+    console.log("out");
   }
 });
 
