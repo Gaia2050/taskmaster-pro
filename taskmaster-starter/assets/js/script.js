@@ -111,7 +111,7 @@ $(".list-group").on("blur", "textarea", function() {
     .closest(".list-group-item")
     .index();
 
-  // update task in array and re-save to localstorage
+  // update task in array and re-save to local storage
   tasks[status][index].text = text;
   saveTasks();
 
@@ -155,7 +155,7 @@ $(".list-group").on("blur", "input[type='text']", function() {
     .closest(".list-group-item")
     .index();
 
-  // update task in array and re-save to localstorage
+  // update task in array and re-save to local storage
   tasks[status][index].date = date;
   saveTasks();
 
