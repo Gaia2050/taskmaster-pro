@@ -201,14 +201,14 @@ $(".card .list-group").sortable({
       .attr("id")
       .replace("list-", "");
 
-      tempArr.push({
-        text: text,
-        date: date 
-      });
+      // tempArr.push({
+      //   text: text,
+      //   date: date 
+      // });
 
-      //update array on tasks object and save
-      tasks[arrName] = tempArr;
-      saveTasks();
+      // //update array on tasks object and save
+      // tasks[arrName] = tempArr;
+      // saveTasks();
       
       var text = $(this)
       .find("p")
@@ -219,6 +219,16 @@ $(".card .list-group").sortable({
       .find("span")
       .text()
       .trim();
+
+      tempArr.push({
+        text: text,
+        date: date 
+      });
+
+      //update array on tasks object and save
+      tasks[arrName] = tempArr;
+      saveTasks();
+      
 
       //add task data tot he temp array as an object
       // tempArr.push({
@@ -234,6 +244,7 @@ $("#trash").droppable({
   accept: ".card .list-group-item",
   tolerance: "touch",
   drop: function(event, ui) {
+    ui.draggable.remove();
     console.log("drop");
   },
   over: function(event, ui) {
